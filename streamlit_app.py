@@ -25,4 +25,4 @@ def get_bond_info(basDt):
 
 st.write("hello!")
 KST = datetime.timezone(datetime.timedelta(hours=9))
-st.write(datetime.datetime.now(KST).today)
+st.write(datetime.datetime.now(KST).strftime('%Y%m%d'))
