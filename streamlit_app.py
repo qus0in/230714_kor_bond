@@ -18,13 +18,12 @@ def get_bond_info(basDt):
     while True:
         try:
             response = requests.get(url, params=params(w))
-            st.write(response.json())
             df = pd.DataFrame(response.json()['response']['body']['items']['item'])
             data.append(df)
-            w += 1
         except:
             break
-    return pd.concat(data)
+        w += 1
+    return data
 
 def get_today():
     KST = datetime.timezone(datetime.timedelta(hours=9))
