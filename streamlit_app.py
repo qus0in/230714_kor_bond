@@ -23,4 +23,4 @@ def get_bond_info(basDt):
     return pd.concat(data)
 
 st.write("hello!")
-st.write(date.now())
+st.write(date.today())
