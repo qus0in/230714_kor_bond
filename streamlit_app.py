@@ -16,11 +16,13 @@ def get_bond_info(basDt):
     w = 1
     data = []
     while True:
-        response = requests.get(url, params=params(w))
-        df = pd.DataFrame(response.json()['response']['body']['items']['item'])
-        if not len(df): break
-        data.append(df)
-        w += 1
+        try:
+            response = requests.get(url, params=params(w))
+            df = pd.DataFrame(response.json()['response']['body']['items']['item'])
+            data.append(df)
+            w += 1
+        except:
+            break
     return pd.concat(data)
 
 def get_today():
