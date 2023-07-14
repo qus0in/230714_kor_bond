@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 import requests
-from datetime import date
+import datetime
+
 @st.cache_data
 def get_bond_info(basDt):
     url = 'http://apis.data.go.kr/1160100/service/GetBondIssuInfoService/getBondBasiInfo'
@@ -23,4 +24,5 @@ def get_bond_info(basDt):
     return pd.concat(data)
 
 st.write("hello!")
-st.write(date.today())
+KST = datetime.timezone(datetime.timedelta(hours=9))
+st.write(datetime.date.today(tzinfo=KST))
