@@ -18,7 +18,7 @@ def get_bond_info(basDt):
     while True:
         try:
             response = requests.get(url, params=params(w))
-            print(response.json())
+            st.write(response.json())
             df = pd.DataFrame(response.json()['response']['body']['items']['item'])
             data.append(df)
             w += 1
