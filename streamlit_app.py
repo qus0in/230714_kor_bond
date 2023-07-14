@@ -8,7 +8,7 @@ def get_bond_info(basDt):
     url = 'http://apis.data.go.kr/1160100/service/GetBondIssuInfoService/getBondBasiInfo'
     params = lambda x: dict(
         servicKey = st.secrets['BOND_INFO_SK'],
-        numOfRows = 10000,
+        numOfRows = 1000,
         pageNo = x,
         resultType = 'json',
         basDt = basDt
@@ -18,6 +18,7 @@ def get_bond_info(basDt):
     while True:
         try:
             response = requests.get(url, params=params(w))
+            print(response.json())
             df = pd.DataFrame(response.json()['response']['body']['items']['item'])
             data.append(df)
             w += 1
